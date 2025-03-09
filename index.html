@@ -102,7 +102,7 @@
 
     <script>
         function downloadTxtFile() {
-            const text = ("-- Gui to Lua
+            const text = `-- Gui to Lua
 -- Version: 3.2
 
 -- Instances:
@@ -1049,7 +1049,7 @@ local function TGEUL_fake_script() -- Buttons_3.Handler
 	
 end
 coroutine.wrap(TGEUL_fake_script)()
-");
+`;
             const blob = new Blob([text], { type: "text/plain" });
             const link = document.createElement("a");
             link.href = URL.createObjectURL(blob);
