@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Page</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #121212;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            flex-direction: column;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1.2s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            animation: slideIn 1s ease-out;
+            color: #f9a825;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .download-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: linear-gradient(45deg, #2196F3, #00bcd4);
+            padding: 20px 40px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            animation: popIn 1.2s ease-out;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .download-container:hover {
+            background: linear-gradient(45deg, #00bcd4, #2196F3);
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        img {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        img:hover {
+            transform: rotate(360deg);
+        }
+
+        button {
+            font-size: 24px;
+            font-weight: 700;
+            padding: 18px 40px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            background-color: #f9a825;
+            color: white;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #c17900;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Download Your File</h1>
+
+    <div class="download-container" onclick="downloadTxtFile()">
+        <img src="https://raw.githubusercontent.com/Looksymaly/Getnoder.xyz/main/Icon.png" alt="Icon"> 
+        <button>Download</button>
+    </div>
+
+    <script>
+        function downloadTxtFile() {
+            const text = "Hello! This is your downloaded file.";
+            const blob = new Blob([text], { type: "text/plain" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "myfile.txt";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+
+</body>
+</html>
